@@ -23,7 +23,7 @@ const ll oo=LLONG_MAX;
 const int mod=1e9+7;
 
 //~ #title
-//~ print minimum number operations using transform a to b
+//~ print minimum number operations using transform a into b
 //~ first is *2
 //~ second is -1
 
