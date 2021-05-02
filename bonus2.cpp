@@ -25,23 +25,23 @@ const int mod=1e9+7;
 vector<pair<int,int>> v[N];
 
 int dist[N];
-int trace[N];
 void dijkstra(int beg){
-	for(int i=0;i<N;++i) trace[i]=-1;
 	for(int i=0;i<N;++i) dist[i]=INF;
 	priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> PQ;
 	dist[beg]=0;
-	PQ.push({beg,0});
+	PQ.push({0,beg});
 	while(!PQ.empty()){
 		pair<int,int> u=PQ.top();
 		PQ.pop();
-		int now=u.first;
-		int d=u.second;
+		int now=u.second;
+		int d=u.first;
+		if(d!=dist[now]) continue;
 		for(pair<int,int> next:v[now]){
-			if(d+next.second<dist[next.first]){
-				dist[next.first]=d+next.second;
-				trace[next.first]=now;
-				PQ.push({next.first,dist[next.first]});
+			int vv=next.first;
+			int uv=next.second;
+			if(dist[vv]>d+uv){
+				dist[vv]=d+uv;
+				PQ.push({dist[vv],vv});
 			}
 		}
 	}
